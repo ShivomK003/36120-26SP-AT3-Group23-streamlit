@@ -1,0 +1,11 @@
+[project]
+name = "group23-crypto-streamlit"
+version = "0.1.0"
+description = "Group 23 cryptocurrency financial intelligence frontend"
+requires-python = ">=3.12"
+dependencies = [
+    "streamlit>=1.40,<2",
+    "requests>=2.32,<3",
+    "pandas>=2.2,<3",
+    "plotly>=5.24,<7",
+]
