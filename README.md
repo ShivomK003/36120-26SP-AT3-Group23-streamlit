@@ -28,6 +28,10 @@ streamlit run app/main.py
 
 ## Student D integration
 
+D preview: https://group23-crypto-preview.streamlit.app . It runs `frontend-student-d-tor` from the private fork `RainyxWang/36120-26SP-AT3-Group23-streamlit-preview`, because Streamlit Community Cloud requires repository administrator access. The upstream PR remains the group review path. This preview supplies D and shared navigation; A/B/C pages are still being developed by their owners.
+
+D API: https://group23-studentd-tor.onrender.com . Root, health, model metadata and all eight feature/prediction pairs passed live checks on 30 October 2026.
+
 Yuxiang Wang (25509050) provides `students/student_d.py`. The homepage calls `volume_panel(api_url, token)` and the TOR tab calls `render(api_url, token)`. Both use HTTP only. Set `STUDENT_D_API_URL` to the verified D Render base URL in the deployment environment. The page contains failures and labels forecasts with missing peer indicators.
 
 The shared entry point supplies one currency selection to all tabs. Member A/B/C modules can expose the same `render(api_url, token)` interface; their existing files are preserved for their owners. Their deployment settings are `STUDENT_A_API_URL`, `STUDENT_B_API_URL` and `STUDENT_C_API_URL`.
