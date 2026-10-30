@@ -1,0 +1,7 @@
+﻿.venv/
+__pycache__/
+*.pyc
+test_student_b.py
+students/test_student_b.py
+.env
+.streamlit/secrets.toml
