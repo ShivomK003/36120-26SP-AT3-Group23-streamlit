@@ -5,6 +5,7 @@ import os
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from students.student_a import render_api_home_card, render_api_tab
 from students.student_b import show_student_b
 from students.student_c import show_student_c
 from students.student_c_summary import render_home_summary
@@ -34,6 +35,7 @@ page = st.radio(
     "Page",
     [
         "Overview",
+        "Asset Performance Index",
         "Market Risk Index",
         "Trend Category",
         "Trading Opportunity Rating",
@@ -43,15 +45,22 @@ page = st.radio(
 )
 
 if page == "Overview":
-    st.info("The dashboard is under development.")
+    st.subheader(f"{token} Market Overview")
 
-    st.subheader("Machine Learning Services")
-    st.write("Student A — Asset Performance Index")
+    # Student A — Asset Performance Index
+    render_api_home_card(token)
+
+    # Student B — Market Risk Index
     st.write("Student B — Market Risk Index")
 
+    # Student C — Trend Category
     render_home_summary(token)
 
+    # Student D — Trading Opportunity Rating
     st.write("Student D — Trading Opportunity Rating")
+
+elif page == "Asset Performance Index":
+    render_api_tab(token)
 
 elif page == "Market Risk Index":
     show_student_b(token)
