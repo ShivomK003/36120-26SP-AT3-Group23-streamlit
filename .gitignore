@@ -3,3 +3,6 @@ __pycache__/
 *.py[cod]
 .env
 .streamlit/secrets.toml
+
+test_student_b.py
+students/test_student_b.py
