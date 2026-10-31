@@ -26,9 +26,10 @@ token = st.selectbox(
     key="selected_token",
 )
 
+
 page = st.radio(
     "Page",
-    ["Overview", "Trend Category"],
+    ["Overview", "Market Risk Index", "Trend Category"],
     horizontal=True,
     key="selected_page",
 )
@@ -37,17 +38,16 @@ if page == "Overview":
     st.info("The dashboard is under development.")
 
     st.subheader("Machine Learning Services")
-
     st.write("Student A — Asset Performance Index")
+    st.write("Student B — Market Risk Index")
 
-    # Student B — Market Risk Index
-    with st.expander("Student B — Market Risk Index", expanded=False):
-        show_student_b(token)
-
-    # Student C — Trend Category
     render_home_summary(token)
 
     st.write("Student D — Trend Opportunity Ranking")
 
-else:
+elif page == "Market Risk Index":
+    show_student_b(token)
+
+elif page == "Trend Category":
     show_student_c(token)
+
