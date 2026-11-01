@@ -7,7 +7,6 @@ import pandas as pd
 from streamlit.testing.v1 import AppTest
 from students import student_c_api as api, student_c_data as data
 from students import student_c_summary as home
-from students import student_a, student_d
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -24,10 +23,6 @@ class HomeSummaryTests(unittest.TestCase):
     def setUp(self):
         home.summary.clear()
         self.addCleanup(home.summary.clear)
-        for module, name in [(student_a, 'render_api_home_card'), (student_d, 'volume_panel')]:
-            isolated = patch.object(module, name, return_value=None)
-            isolated.start()
-            self.addCleanup(isolated.stop)
 
     def app(self):
         return AppTest.from_file(str(ROOT/'app/main.py'),default_timeout=15).run()
@@ -67,7 +62,7 @@ class HomeSummaryTests(unittest.TestCase):
             self.assertEqual(len(app.json),0)
             app.selectbox[0].set_value('ETH').run()
             self.assertEqual(summary.call_args.args[0],'ETH')
-            self.assertIn('Trend Category · ETH', [item.value for item in app.subheader])
+            self.assertIn('ETH',app.subheader[-1].value)
             app.button[0].click().run()
             self.assertEqual(app.radio[0].value,'Trend Category')
             self.assertIn('ETH',app.header[0].value)

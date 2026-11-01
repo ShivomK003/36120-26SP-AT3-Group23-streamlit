@@ -170,9 +170,9 @@ D preview: https://group23-crypto-preview.streamlit.app . It runs `frontend-stud
 
 D API: https://group23-studentd-tor.onrender.com . Root, health, model metadata and all eight feature/prediction pairs passed live checks on 30 October 2026.
 
-Yuxiang Wang (25509050) provides `students/student_d.py`. On `integration/student-a-b-c-d`, the Overview calls `volume_panel(api_url, token)` and the dedicated Trading Opportunity Rating page calls `render(api_url, token)`. The shared cryptocurrency selection reaches both views. Both use HTTP only. `STUDENT_D_API_URL` defaults to the verified D Render base URL above and can be set in the deployment environment. The page contains failures and labels forecasts with missing peer indicators.
+Yuxiang Wang (25509050) provides `students/student_d.py`. The homepage calls `volume_panel(api_url, token)` and the TOR tab calls `render(api_url, token)`. Both use HTTP only. Set `STUDENT_D_API_URL` to the verified D Render base URL in the deployment environment. The page contains failures and labels forecasts with missing peer indicators.
 
-The integrated entry point shares one currency selection across A's `render_api_tab(token)`, B's `show_student_b(token)`, C's `show_student_c(token)` and D's `render(api_url, token)`. The Overview uses each available homepage component. Service settings remain in the individual member modules and deployment environment.
+The shared entry point supplies one currency selection to all tabs. Member A/B/C modules can expose the same `render(api_url, token)` interface; their existing files are preserved for their owners. Their deployment settings are `STUDENT_A_API_URL`, `STUDENT_B_API_URL` and `STUDENT_C_API_URL`.
 
 The core dependency versions match the course environment. Starlette 1.3.1 is pinned because later response handling conflicts with Streamlit 1.59.0 image compression; four regression tests cover this behaviour. Run `python -m pytest tests -q` after installing pytest.
 
