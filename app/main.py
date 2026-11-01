@@ -44,6 +44,11 @@ page = st.radio(
     key="selected_page",
 )
 
+d_api_url = os.getenv(
+    "STUDENT_D_API_URL",
+    "https://group23-studentd-tor.onrender.com",
+).strip()
+
 if page == "Overview":
     st.subheader(f"{token} Market Overview")
 
@@ -57,7 +62,11 @@ if page == "Overview":
     render_home_summary(token)
 
     # Student D — Trading Opportunity Rating
-    st.write("Student D — Trading Opportunity Rating")
+    st.subheader("Student D — Trading activity")
+    if d_api_url:
+        student_d.volume_panel(d_api_url, token)
+    else:
+        st.info("Student D's API URL is not configured.")
 
 elif page == "Asset Performance Index":
     render_api_tab(token)
@@ -69,11 +78,6 @@ elif page == "Trend Category":
     show_student_c(token)
 
 elif page == "Trading Opportunity Rating":
-    d_api_url = os.getenv(
-        "STUDENT_D_API_URL",
-        "https://group23-studentd-tor.onrender.com",
-    ).strip()
-
     if d_api_url:
         student_d.render(d_api_url, token)
     else:
